@@ -2,7 +2,7 @@
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
 Vendor/bin/cake bake project .
-y
+echo 'y'
 . $ROOT_DIR/bootstrap.sh
 cp Config/database.php.default Config/database.php
 
