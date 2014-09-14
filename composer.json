@@ -1,5 +1,5 @@
 {
-    "name": "bmilesp/cakePHP-post-install",
+    "name": "bmilesp/cakephp-post-install",
     "description": "Post CakePHP install scripts to automate setup. For use with Composer Post Install Automation Scripts.",
     "authors": [
         {
