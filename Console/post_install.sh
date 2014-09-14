@@ -1,5 +1,5 @@
 #!/bin/bash
-ROOT_DIR='../CakephpPostInstall/Console'
+ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
 Vendor/bin/cake bake project .
 . $ROOT_DIR/bootstrap.sh
