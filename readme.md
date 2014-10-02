@@ -1,4 +1,4 @@
-Installation
+### Installation
 
 If you would like to automatically setup the database for the project,
 Modify settings for mysql in Plugin/CakephpPostInstall/Console/bootstrap.sh
