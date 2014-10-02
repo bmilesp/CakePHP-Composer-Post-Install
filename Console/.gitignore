@@ -28,3 +28,8 @@ Thumbs.db
 ##########
 Vendor/*
 Vendor
+
+#CakePHP#
+#########
+Config/core.php
+Config/database.php
