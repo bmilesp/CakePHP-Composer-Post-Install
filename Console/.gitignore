@@ -26,6 +26,5 @@ Thumbs.db
 
 #composer#
 ##########
-Vendor/composer/*
-Vendor/autoload.php
-Plugin/*
+Vendor/*
+Vendor
