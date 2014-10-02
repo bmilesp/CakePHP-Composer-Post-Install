@@ -9,7 +9,11 @@ chmod 777 Plugin/CakephpPostInstall/Console/post_install.sh
 chmod 777 Plugin/CakephpPostInstall/Console/bootstrap.sh
 chmod 777 Vendor/cakephp/cakephp/lib/Cake/Console/cake
 
-if you're running initially on a production server, probably should set
+
+Manually run: 
+		bash Plugin/CakephpPostInstall/Console/post_install.sh
+
+If you're running initially on a production server, probably should set
 the permissions back
 
 eg:
