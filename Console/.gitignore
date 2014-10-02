@@ -28,5 +28,4 @@ Thumbs.db
 ##########
 Vendor/composer/*
 Vendor/autoload.php
-Plugin/.git
-Plugin/**/.git
+Plugin/*
