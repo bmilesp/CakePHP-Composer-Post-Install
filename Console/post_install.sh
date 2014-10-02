@@ -2,7 +2,7 @@
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
 Vendor/bin/cake bake project .
-echo 'y'
+
 . $ROOT_DIR/bootstrap.sh
 cp Config/database.php.default Config/database.php
 
@@ -23,7 +23,6 @@ mysql -uroot -e "create database if not exists $PROJECT_NAME"
 
 
 cat $ROOT_DIR/autoloader_fix.inc >> Config/bootstrap.php
-cat $ROOT_DIR/gitignore_append.inc >> .gitignore
 
 OLD="define('CAKE_CORE_INCLUDE_PATH"
 NEW="define('CAKE_CORE_INCLUDE_PATH',ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib');"
