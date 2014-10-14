@@ -31,5 +31,11 @@ Vendor
 
 #CakePHP#
 #########
+tmp/cache/models/*
+tmp/cache/persistent/*
+tmp/cache/views/*
+tmp/logs/*
+tmp/sessions/*
+tmp/tests/*
 Config/core.php
 Config/database.php
