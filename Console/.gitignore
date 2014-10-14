@@ -45,6 +45,7 @@ tmp/logs/*
 tmp/sessions/*
 tmp/tests/*
 
-#Config files
 Config/core.php
 Config/database.php
+
+#fin
