@@ -1,4 +1,9 @@
 #!/bin/bash
+
+PROJECT_NAME=$1
+DB_DEFAULT_USER=$2
+DB_DEFAULT_PASSWORD=$3
+
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
 if [ $# -ge 1 ]
