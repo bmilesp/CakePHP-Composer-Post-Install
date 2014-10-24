@@ -1,8 +1,15 @@
 #!/bin/bash
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
+if [ $# -ge 1 ]
+then
+    while true; do echo "$1"; done
+else
+    while true; do echo y; done
+fi
+
 Vendor/bin/cake bake project .
-echo 'y'
+
 . $ROOT_DIR/bootstrap.sh
 cp Config/database.php.default Config/database.php
 
