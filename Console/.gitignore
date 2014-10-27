@@ -31,13 +31,27 @@ Vendor
 
 #CakePHP#
 #########
-tmp/*
-!tmp/cache/models/empty
-!tmp/cache/persistent/empty
-!tmp/cache/views/empty
-!tmp/logs/empty
-!tmp/sessions/empty
-!tmp/tests/empty
+/tmp/*
+!/tmp/cache
+!/tmp/logs
+!/tmp/sessions
+!/tmp/tests
+/tmp/cache/*
+!/tmp/cache/models
+!/tmp/cache/persistent
+!/tmp/cache/views
+/tmp/cache/models/*
+/tmp/cache/persistent/*
+/tmp/cache/views/*
+/tmp/logs/*
+/tmp/sessions/*
+/tmp/tests/*
+!/tmp/cache/models/empty
+!/tmp/cache/persistent/empty
+!/tmp/cache/views/empty
+!/tmp/logs/empty
+!/tmp/sessions/empty
+!/tmp/tests/empty
 
 Config/core.php
 Config/database.php
