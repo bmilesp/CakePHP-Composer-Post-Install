@@ -8,22 +8,12 @@ ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
 yes y | Vendor/bin/cake bake project .
 
-#add tmp folders
-mkdir tmp
-mkdir cache
-mkdir cache/models
-mkdir cache/persistent
-mkdir cache/views
-mkdir logs
-mkdir sessions
-mkdir tests
-touch tests/empty
-touch sessions empty
-touch logs/empty
-touch cache/models/empty
-touch cache/persistent/empty
-touch cache/views/empty
-
+touch tmp/cache/models/empty
+touch tmp/cache/persistent/empty
+touch tmp/cache/views/empty
+touch tmp/logs/empty
+touch tmp/sessions/empty
+touch tmp/tests/empty
 
 . $ROOT_DIR/bootstrap.sh
 cp Config/database.php.default Config/database.php
