@@ -7,7 +7,7 @@ DB_DEFAULT_PASSWORD=''
 DB_DEFAULT_HOST=localhost
 
 
-while getopts "d:s:a:p:c:h" OPTION; do
+while getopts "d:s:u:g:" OPTION; do
     case $OPTION in
         d)
             PROJECT_NAME=$OPTARG
