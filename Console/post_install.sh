@@ -1,9 +1,30 @@
 #!/bin/bash
+# post_install.sh -d saas -s root -u password -g localhost
 
-PROJECT_NAME=$1
-DB_DEFAULT_USER=$2
-DB_DEFAULT_PASSWORD=$3
-DB_DEFAULT_HOST=$4
+PROJECT_NAME=saas
+DB_DEFAULT_USER=root
+DB_DEFAULT_PASSWORD=''
+DB_DEFAULT_HOST=localhost
+
+
+while getopts "d:s:a:p:c:h" OPTION; do
+    case $OPTION in
+        d)
+            PROJECT_NAME=$OPTARG
+            ;;
+        s)
+            DB_DEFAULT_USER=$OPTARG
+            ;;
+        u)
+            DB_DEFAULT_PASSWORD=$OPTARG
+            ;;
+        g)
+            DB_DEFAULT_HOST=$OPTARG
+            ;;
+    esac
+done
+
+
 
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
