@@ -1,29 +1,38 @@
 #!/bin/bash
 # post_install.sh -d saas -s root -u password -g localhost
 
-PROJECT_NAME=saas
-DB_DEFAULT_USER=root
-DB_DEFAULT_PASSWORD=''
-DB_DEFAULT_HOST=localhost
+P_NAME=saas
+DB_USER=root
+DB_PASSWORD=''
+DB_HOST=localhost
 
 
 while getopts "d:s:u:g:" OPTION; do
     case $OPTION in
         d)
-            PROJECT_NAME=$OPTARG
+            P_NAME=$OPTARG
             ;;
         s)
-            DB_DEFAULT_USER=$OPTARG
+            DB_USER=$OPTARG
             ;;
         u)
-            DB_DEFAULT_PASSWORD=$OPTARG
+            DB_PASSWORD=$OPTARG
             ;;
         g)
-            DB_DEFAULT_HOST=$OPTARG
+            DB_HOST=$OPTARG
             ;;
     esac
 done
 
+export P_NAME
+export DB_USER
+export DB_PASSWORD
+export DB_HOST
+
+echo $P_NAME
+echo $DB_USER
+echo $DB_PASSWORD
+echo $DB_HOST
 
 
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
@@ -44,20 +53,22 @@ cp Config/database.php.default Config/database.php
 cp $ROOT_DIR/.gitignore .
 cp $ROOT_DIR/.gitattributes .
 OLD="user"
-sed -i "s/$OLD/$DB_DEFAULT_USER/g" Config/database.php
+sed -i "s/$OLD/$DB_USER/g" Config/database.php
 
 OLD="=> 'password'"
-NEW="=> '$DB_DEFAULT_PASSWORD'"
+NEW="=> '$DB_PASSWORD'"
 sed -i "s/$OLD/$NEW/g" Config/database.php
 
 OLD="=> 'localhost'"
-NEW="=> '$DB_DEFAULT_HOST'"
+NEW="=> '$DB_HOST'"
 sed -i "s/$OLD/$NEW/g" Config/database.php
 
 OLD="database_name"
-sed -i "s/$OLD/$PROJECT_NAME/g" Config/database.php
+sed -i "s/$OLD/$P_NAME/g" Config/database.php
 
-mysql -uroot -e "create database if not exists $PROJECT_NAME"
+
+#### need to change here
+mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_NAME"
 
 
 cat $ROOT_DIR/autoloader_fix.inc >> Config/bootstrap.php
