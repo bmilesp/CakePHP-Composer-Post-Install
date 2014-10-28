@@ -3,6 +3,7 @@
 PROJECT_NAME=$1
 DB_DEFAULT_USER=$2
 DB_DEFAULT_PASSWORD=$3
+DB_DEFAULT_HOST=$4
 
 ROOT_DIR='Plugin/CakephpPostInstall/Console'
 
@@ -26,6 +27,10 @@ sed -i "s/$OLD/$DB_DEFAULT_USER/g" Config/database.php
 
 OLD="=> 'password'"
 NEW="=> '$DB_DEFAULT_PASSWORD'"
+sed -i "s/$OLD/$NEW/g" Config/database.php
+
+OLD="=> 'localhost'"
+NEW="=> '$DB_DEFAULT_HOST'"
 sed -i "s/$OLD/$NEW/g" Config/database.php
 
 OLD="database_name"
