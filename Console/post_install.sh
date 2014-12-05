@@ -46,7 +46,7 @@ touch tmp/logs/empty
 touch tmp/sessions/empty
 touch tmp/tests/empty
 
-. $ROOT_DIR/bootstrap.sh
+#. $ROOT_DIR/bootstrap.sh
 cp Config/database.php.default Config/database.php
 
 #maybe get single file from cakephp github repo instead?
@@ -72,6 +72,7 @@ mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_
 
 
 cat $ROOT_DIR/autoloader_fix.inc >> Config/bootstrap.php
+cat $ROOT_DIR/add_plugins.inc >> Config/bootstrap.php
 
 OLD="define('CAKE_CORE_INCLUDE_PATH"
 NEW="define('CAKE_CORE_INCLUDE_PATH',ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib');"
