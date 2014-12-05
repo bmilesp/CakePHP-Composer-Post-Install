@@ -67,7 +67,7 @@ OLD="database_name"
 sed -i "s/$OLD/$P_NAME/g" Config/database.php
 
 #modify appController for SaasOverrides (yes there is a cclass SIC in there on purpose)
-sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverrides.Controller', 'SaasOverridesController');" Controller/AppController.php
+sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesController', 'SaasOverrides.Controller');" Controller/AppController.php
 sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" Controller/AppController.php
 
 
