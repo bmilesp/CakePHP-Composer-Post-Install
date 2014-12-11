@@ -70,6 +70,8 @@ sed -i "s/$OLD/$P_NAME/g" Config/database.php
 sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesController', 'SaasOverrides.Controller');" Controller/AppController.php
 sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" Controller/AppController.php
 
+#parse extensions
+sed -i "/CakePlugin::routes();/a\Router::parseExtensions('json','csv');" Config/routes.php
 
 #### need to change here
 mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_NAME"
