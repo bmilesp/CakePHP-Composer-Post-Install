@@ -56,4 +56,7 @@ Vendor
 Config/core.php
 Config/database.php
 
+#meteor
+/m/*
+
 #fin
