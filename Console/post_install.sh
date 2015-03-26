@@ -40,7 +40,7 @@ echo $DB_PASSWORD
 echo $DB_HOST
 
 
-ROOT_DIR='Plugin/CakephpPostInstall/Console'
+ROOT_DIR='$ROOT_PATH/Plugin/CakephpPostInstall/Console'
 
 yes y | Vendor/bin/cake bake project .
 
