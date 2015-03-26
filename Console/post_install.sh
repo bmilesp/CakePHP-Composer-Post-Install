@@ -5,9 +5,10 @@ P_NAME=saas
 DB_USER=root
 DB_PASSWORD=''
 DB_HOST=localhost
+ROOT_PATH = /var/www/html/saas
 
 
-while getopts "d:s:u:g:" OPTION; do
+while getopts "d:s:u:g:p:" OPTION; do
     case $OPTION in
         d)
             P_NAME=$OPTARG
@@ -21,6 +22,9 @@ while getopts "d:s:u:g:" OPTION; do
         g)
             DB_HOST=$OPTARG
             ;;
+        p)
+             ROOT_PATH=$OPTARG
+            ;;
     esac
 done
 
@@ -28,6 +32,7 @@ export P_NAME
 export DB_USER
 export DB_PASSWORD
 export DB_HOST
+export ROOT_PATH
 
 echo $P_NAME
 echo $DB_USER
