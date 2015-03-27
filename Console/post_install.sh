@@ -1,13 +1,10 @@
 #!/bin/bash
-# post_install.sh -d saas -s root -u password -g localhost
-
+# post_install.sh -d saas -s root -u password -g localhost -p /var/www/html/saas
 P_NAME=saas
 DB_USER=root
 DB_PASSWORD=''
 DB_HOST=localhost
-ROOT_PATH=/var/www/html/saas
-
-
+ROOT_PATH='/var/www/html/saas'
 while getopts "d:s:u:g:p:" OPTION; do
     case $OPTION in
         d)
@@ -38,7 +35,9 @@ echo $P_NAME
 echo $DB_USER
 echo $DB_PASSWORD
 echo $DB_HOST
+echo $ROOT_PATH
 
+exit 0
 
 ROOT_DIR='$ROOT_PATH/Plugin/CakephpPostInstall/Console'
 
@@ -76,7 +75,7 @@ sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesContro
 sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" $ROOT_PATH/Controller/AppController.php
 
 #parse extensions
-sed -i "/CakePlugin::routes();/a\Router::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
+sed -i "/CakePlugin::routes();/aouter::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
 
 #### need to change here
 mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_NAME"
