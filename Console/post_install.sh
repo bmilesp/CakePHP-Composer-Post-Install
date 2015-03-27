@@ -5,7 +5,7 @@ P_NAME=saas
 DB_USER=root
 DB_PASSWORD=''
 DB_HOST=localhost
-ROOT_PATH = /var/www/html/saas
+ROOT_PATH=/var/www/html/saas
 
 
 while getopts "d:s:u:g:p:" OPTION; do
@@ -23,7 +23,7 @@ while getopts "d:s:u:g:p:" OPTION; do
             DB_HOST=$OPTARG
             ;;
         p)
-             ROOT_PATH=$OPTARG
+            ROOT_PATH=$OPTARG
             ;;
     esac
 done
@@ -42,50 +42,50 @@ echo $DB_HOST
 
 ROOT_DIR='$ROOT_PATH/Plugin/CakephpPostInstall/Console'
 
-yes y | Vendor/bin/cake bake project .
+yes y | $ROOT_PATH/Vendor/bin/cake bake project .
 
-touch tmp/cache/models/empty
-touch tmp/cache/persistent/empty
-touch tmp/cache/views/empty
-touch tmp/logs/empty
-touch tmp/sessions/empty
-touch tmp/tests/empty
+touch $ROOT_PATH/tmp/cache/models/empty
+touch $ROOT_PATH/tmp/cache/persistent/empty
+touch $ROOT_PATH/tmp/cache/views/empty
+touch $ROOT_PATH/tmp/logs/empty
+touch $ROOT_PATH/tmp/sessions/empty
+touch $ROOT_PATH/tmp/tests/empty
 
 #. $ROOT_DIR/bootstrap.sh
-cp Config/database.php.default Config/database.php
+cp $ROOT_PATH/Config/database.php.default $ROOT_PATH/Config/database.php
 
 #maybe get single file from cakephp github repo instead?
 cp $ROOT_DIR/.gitignore .
 cp $ROOT_DIR/.gitattributes .
 OLD="user"
-sed -i "s/$OLD/$DB_USER/g" Config/database.php
+sed -i "s/$OLD/$DB_USER/g" $ROOT_PATH/Config/database.php
 
 OLD="=> 'password'"
 NEW="=> '$DB_PASSWORD'"
-sed -i "s/$OLD/$NEW/g" Config/database.php
+sed -i "s/$OLD/$NEW/g" $ROOT_PATH/Config/database.php
 
 OLD="=> 'localhost'"
 NEW="=> '$DB_HOST'"
-sed -i "s/$OLD/$NEW/g" Config/database.php
+sed -i "s/$OLD/$NEW/g" $ROOT_PATH/Config/database.php
 
 OLD="database_name"
-sed -i "s/$OLD/$P_NAME/g" Config/database.php
+sed -i "s/$OLD/$P_NAME/g" $ROOT_PATH/Config/database.php
 
 #modify appController for SaasOverrides (yes there is a cclass SIC in there on purpose)
-sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesController', 'SaasOverrides.Controller');" Controller/AppController.php
-sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" Controller/AppController.php
+sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesController', 'SaasOverrides.Controller');" $ROOT_PATH/Controller/AppController.php
+sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" $ROOT_PATH/Controller/AppController.php
 
 #parse extensions
-sed -i "/CakePlugin::routes();/a\Router::parseExtensions('json','csv');" Config/routes.php
+sed -i "/CakePlugin::routes();/a\Router::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
 
 #### need to change here
 mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_NAME"
 
 
-cat $ROOT_DIR/autoloader_fix.inc >> Config/bootstrap.php
-cat $ROOT_DIR/add_plugins.inc >> Config/bootstrap.php
+cat $ROOT_DIR/autoloader_fix.inc >> $ROOT_PATH/Config/bootstrap.php
+cat $ROOT_DIR/add_plugins.inc >> $ROOT_PATH/Config/bootstrap.php
 
 OLD="define('CAKE_CORE_INCLUDE_PATH"
 NEW="define('CAKE_CORE_INCLUDE_PATH',ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib');"
-sed -i "/$OLD/c\ $NEW" webroot/index.php
-sed -i "/$OLD/c\ $NEW" webroot/test.php
+sed -i "/$OLD/c\ $NEW" $ROOT_PATH/webroot/index.php
+sed -i "/$OLD/c\ $NEW" $ROOT_PATH/webroot/test.php
