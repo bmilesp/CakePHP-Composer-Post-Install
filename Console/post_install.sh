@@ -37,6 +37,7 @@ echo $DB_PASSWORD
 echo $DB_HOST
 echo $ROOT_PATH
 
+echo "start"
 
 ROOT_DIR='$ROOT_PATH/Plugin/CakephpPostInstall/Console'
 
@@ -48,6 +49,7 @@ touch $ROOT_PATH/tmp/cache/views/empty
 touch $ROOT_PATH/tmp/logs/empty
 touch $ROOT_PATH/tmp/sessions/empty
 touch $ROOT_PATH/tmp/tests/empty
+chmod 777 -R $ROOT_PATH/tmp
 
 #. $ROOT_DIR/bootstrap.sh
 cp $ROOT_PATH/Config/database.php.default $ROOT_PATH/Config/database.php
