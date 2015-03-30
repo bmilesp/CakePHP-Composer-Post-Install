@@ -39,7 +39,7 @@ echo $ROOT_PATH
 
 echo "start"
 
-ROOT_DIR="$ROOT_PATH/Plugin/CakephpPostInstall/Console"
+ROOT_DIR= $ROOT_PATH/Plugin/CakephpPostInstall/Console
 
 yes y | $ROOT_PATH/Vendor/bin/cake bake project .
 
