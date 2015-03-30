@@ -37,7 +37,6 @@ echo $DB_PASSWORD
 echo $DB_HOST
 echo $ROOT_PATH
 
-exit 0
 
 ROOT_DIR='$ROOT_PATH/Plugin/CakephpPostInstall/Console'
 
