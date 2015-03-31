@@ -53,8 +53,8 @@ sudo chmod 777 -R $ROOT_PATH/tmp
 cp $ROOT_PATH/Config/database.php.default $ROOT_PATH/Config/database.php
 
 #maybe get single file from cakephp github repo instead?
-cp "$ROOT_PATH/Plugin/CakephpPostInstall/Console/.gitignore" "$ROOT_PATH/.gitignore"
-cp "$ROOT_PATH/Plugin/CakephpPostInstall/Console/.gitattributes" "$ROOT_PATH/.gitattributes"
+cp $ROOT_PATH/Plugin/CakephpPostInstall/Console/.gitignore $ROOT_PATH/.gitignore
+cp $ROOT_PATH/Plugin/CakephpPostInstall/Console/.gitattributes $ROOT_PATH/.gitattributes
 OLD="user"
 sed -i "s/$OLD/$DB_USER/g" $ROOT_PATH/Config/database.php
 
@@ -80,6 +80,7 @@ sed -i "/CakePlugin::routes();/aouter::parseExtensions('json','csv');" $ROOT_PAT
 mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_NAME"
 
 ls -la $ROOT_PATH/Plugin/CakephpPostInstall/Console/
+echo "ok catting"
 cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/autoloader_fix.inc >> $ROOT_PATH/Config/bootstrap.php
 cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/add_plugins.inc >> $ROOT_PATH/Config/bootstrap.php
 
