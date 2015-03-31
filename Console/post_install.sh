@@ -74,7 +74,7 @@ sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesContro
 sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" $ROOT_PATH/Controller/AppController.php
 
 #parse extensions
-sed -i "/CakePlugin::routes();/aouter::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
+sed -i "/CakePlugin::routes();/aRouter::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
 
 #### need to change here
 mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "create database if not exists $P_NAME"
@@ -83,7 +83,7 @@ ls -la $ROOT_PATH/Plugin/CakephpPostInstall/Console/
 echo "ok catting"
 cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/autoloader_fix.inc >> $ROOT_PATH/Config/bootstrap.php
 cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/add_plugins.inc >> $ROOT_PATH/Config/bootstrap.php
-chmod 777 -R $ROOT_PATH/tmp
+
 
 OLD="define('CAKE_CORE_INCLUDE_PATH"
 NEW="define('CAKE_CORE_INCLUDE_PATH',ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib');"
