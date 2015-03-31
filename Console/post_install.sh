@@ -47,7 +47,7 @@ touch $ROOT_PATH/tmp/cache/views/empty
 touch $ROOT_PATH/tmp/logs/empty
 touch $ROOT_PATH/tmp/sessions/empty
 touch $ROOT_PATH/tmp/tests/empty
-sudo chmod 777 -R $ROOT_PATH/tmp
+
 
 #. $ROOT_DIR/bootstrap.sh
 cp $ROOT_PATH/Config/database.php.default $ROOT_PATH/Config/database.php
@@ -83,6 +83,7 @@ ls -la $ROOT_PATH/Plugin/CakephpPostInstall/Console/
 echo "ok catting"
 cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/autoloader_fix.inc >> $ROOT_PATH/Config/bootstrap.php
 cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/add_plugins.inc >> $ROOT_PATH/Config/bootstrap.php
+chmod 777 -R $ROOT_PATH/tmp
 
 OLD="define('CAKE_CORE_INCLUDE_PATH"
 NEW="define('CAKE_CORE_INCLUDE_PATH',ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib');"
