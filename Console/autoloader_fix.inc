@@ -1,6 +1,6 @@
 
 
-// Load Composer autoload. test2.
+// Load Composer autoload. test3.
 require APP . 'Vendor/autoload.php';
 
 // Remove and re-prepend CakePHP's autoloader as Composer thinks it is the
