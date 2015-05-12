@@ -1,4 +1,4 @@
 <div class='container'>
-<h3><?php echo $_ENV['SAAS_PROJECT_NAME'] ?></h3>
+<h3>Micro Saas</h3>
 </div>
 
