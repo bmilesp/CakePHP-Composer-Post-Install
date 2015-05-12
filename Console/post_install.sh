@@ -76,7 +76,8 @@ sed -i "/Router::connect('/pages;/a #Router::connect('/pages" $ROOT_PATH/Config/
 sed -i "/pages', 'action' => 'display', 'home'));/a /pages', 'action' => 'index'));" $ROOT_PATH/Config/routes.php
 
 rm $ROOT_PATH/View/Pages/home.ctp
-cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/index.php >> $ROOT_PATH/View/Pages/index.php
+cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/index.ctp >> $ROOT_PATH/View/Pages/index.ctp
+cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/PagesController.php >> $ROOT_PATH/Controller/PagesController.php
 
 #parse extensions
 sed -i "/CakePlugin::routes();/aRouter::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
