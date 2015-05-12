@@ -72,6 +72,11 @@ sed -i "s/$OLD/$P_NAME/g" $ROOT_PATH/Config/database.php
 #modify appController for SaasOverrides (yes there is a cclass SIC in there on purpose)
 sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesController', 'SaasOverrides.Controller');" $ROOT_PATH/Controller/AppController.php
 sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" $ROOT_PATH/Controller/AppController.php
+sed -i "/Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));/a //" $ROOT_PATH/Config/routes.php
+sed -i "/Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));/a Router::connect('/', array('controller' => 'pages', 'action' => 'index'));" $ROOT_PATH/Config/routes.php
+
+rm $ROOT_PATH/View/Pages/home.ctp
+cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/index.php >> $ROOT_PATH/View/Pages/index.php
 
 #parse extensions
 sed -i "/CakePlugin::routes();/aRouter::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
