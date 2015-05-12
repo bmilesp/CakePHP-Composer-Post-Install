@@ -72,12 +72,12 @@ sed -i "s/$OLD/$P_NAME/g" $ROOT_PATH/Config/database.php
 #modify appController for SaasOverrides (yes there is a cclass SIC in there on purpose)
 sed -i "/App::uses('Controller', 'Controller');/a App::uses('SaasOverridesController', 'SaasOverrides.Controller');" $ROOT_PATH/Controller/AppController.php
 sed -i "/class AppController extends Controller/ cclass AppController extends SaasOverridesController {" $ROOT_PATH/Controller/AppController.php
-sed -i "/Router::connect('/pages;/a #Router::connect('/pages" $ROOT_PATH/Config/routes.php
-sed -i "/pages', 'action' => 'display', 'home'));/a /pages', 'action' => 'index'));" $ROOT_PATH/Config/routes.php
+sed -i "s/Router::connect('\/pages/ #Router::connect('\/pages/g" $ROOT_PATH/Config/routes.php
+sed -i "s/pages', 'action' => 'display', 'home'));/pages', 'action' => 'index'));/g" $ROOT_PATH/Config/routes.php
 
 rm $ROOT_PATH/View/Pages/home.ctp
-cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/index.ctp >> $ROOT_PATH/View/Pages/index.ctp
-cat $ROOT_PATH/Plugin/CakephpPostInstall/Console/PagesController.php >> $ROOT_PATH/Controller/PagesController.php
+cp $ROOT_PATH/Plugin/CakephpPostInstall/Console/index.ctp  $ROOT_PATH/View/Pages/index.ctp
+cp $ROOT_PATH/Plugin/CakephpPostInstall/Console/PagesController.php $ROOT_PATH/Controller/PagesController.php
 
 #parse extensions
 sed -i "/CakePlugin::routes();/aRouter::parseExtensions('json','csv');" $ROOT_PATH/Config/routes.php
