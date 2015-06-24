@@ -26,8 +26,9 @@ Thumbs.db
 
 #composer#
 ##########
-Vendor/*
-Vendor 
+/Vendor/*
+/Vendor 
+/Plugin/*
 
 #CakePHP#
 #########
